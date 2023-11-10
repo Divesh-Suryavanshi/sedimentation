@@ -2,8 +2,99 @@
 <html>
   <head>
     <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="css/stoppered.css" />
+    <link rel="stylesheet" href="css/picker.css" />
+    <link rel="stylesheet" href="css/beaker.css" />
+    <link rel="stylesheet" href="css/microwave.css" />
+    <link rel="stylesheet" href="./css/weight.css" />
   </head>
   <body>
+    <img src="images/bg.png" alt="experiment_background" id="background" />
+    <div class="container">
+      <!-- stoppered_vessel -->
+      <div class="stoppered_vessel">
+        <div class="pipette">
+          <div class="neck">
+            <div class="cap"></div>
+          </div>
+          <div class="middle">
+            <div class="sediment"></div>
+          </div>
+          <div class="bottom"></div>
+          <div class="markings">
+            <div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Andreasen pipette -->
+      <div class="picker">
+        <div class="length">
+          <div class="sediment"></div>
+        </div>
+        <div class="bulb"></div>
+        <div class="adjuster">
+          <div class="pin"></div>
+          <div class="shell"></div>
+          <div class="screw"></div>
+        </div>
+      </div>
+
+      <!-- beakers -->
+      <div class="appratus">
+        <div class="beaker"><div class="sediment"></div></div>
+        <div class="weighing_balance">
+          <img src="./images/weight.svg" class="weight-image" alt="" />
+          <div class="weigh_area">
+            <img src="./images/sand.png" alt="" />
+          </div>
+          <button type="button" class="btn btn1">
+            <img src="./images/video-play-pause.svg" alt="" srcset="" />
+            <!-- start
+            <hr noshade color="black" size="1" />
+            stop -->
+          </button>
+          <button type="button" class="btn btn2">
+            <img src="./images/video-stop.svg" alt="" srcset="" />
+            <!-- reset -->
+          </button>
+          <div class="display display_off">0.000</div>
+        </div>
+      </div>
+      <div class="microwave">
+        <div class="store">
+          <div class="window"></div>
+        </div>
+        <div class="controls">
+          <div class="display"></div>
+          <div class="knob"></div>
+          <div class="lights">
+            <div class="red-light"></div>
+            <div class="blue-light"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button id="openAction">Open Action Menu</button>
+    <div class="actions">
+      <button id="close">X</button>
+      <button id="fill">fill vessel</button>
+      <button id="cap">cap vessel</button>
+      <button id="shake">shake vessel</button>
+      <button id="bath">constant temperature bath</button>
+      <button id="put">put pipette inside the beaker</button>
+      <button id="fillPicker">fill the picker</button>
+      <button id="putInPan">put pipette into the pan</button>
+      <button id="empty">empty pipette into the pan</button>
+      <button id="rest">rest the pipette</button>
+      <button id="heat">heat the beaker</button>
+      <button id="weigh">take weight of sand</button>
+    </div>
+
+    <!-- <div class="test"></div> -->
     <script src="./js/main.js"></script>
+    <script src="./js/weight.js"></script>
+    <script src="./js/menu.js"></script>
   </body>
 </html>

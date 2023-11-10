@@ -1,0 +1,132 @@
+/* body {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+} */
+
+.picker {
+  width: fit-content;
+  /* height: fit-content; */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(90deg);
+  left: 150px;
+  top: 100px;
+}
+
+.length {
+  height: 500px;
+  width: 10px;
+  /* background-color: grey; */
+  /* background-color: #c7e1ff; */
+  background-color: rgba(189, 195, 199, 0.4);
+  position: relative;
+  overflow: hidden;
+  border-bottom-right-radius: 100px;
+}
+
+.length > .sediment {
+  background-image: url("../images/sediment-soil.jpg");
+  background-size: contain;
+  background-origin: border-box;
+  height: 100%;
+  position: relative;
+  z-index: -1;
+  bottom: -500px;
+}
+
+/* .length::after {
+  content: "";
+  position: absolute;
+  background: white;
+  aspect-ratio: 1;
+  border-radius: 20%;
+  rotate: 45deg;
+  height: 50px;
+  width: 50px;
+  bottom: -36px;
+} */
+
+.bulb {
+  height: 75px;
+  width: 45px;
+  position: absolute;
+  top: 30px;
+  /* background-color: grey; */
+  /* background-color: #c7e1ff; */
+  background-color: rgba(189, 195, 199, 0.6);
+  border-radius: 35px;
+}
+
+.adjuster {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 130px;
+}
+
+.pin {
+  height: 5px;
+  width: 70px;
+  background-color: grey;
+  /* background-color: #c7e1ff; */
+  position: absolute;
+  left: -40px;
+  /* z-index: 1; */
+}
+
+.shell {
+  height: 10px;
+  width: 50px;
+  position: absolute;
+  background-color: grey;
+  /* background-color: #c7e1ff; */
+  /* z-index: -1; */
+  left: -20px;
+  overflow: hidden;
+}
+
+/* .shell::before{
+    content: "";
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    left: -5px;
+    top: 4px;
+} */
+
+.screw {
+  width: 20px;
+  height: 20px;
+  background-color: grey;
+  /* background-color: #c7e1ff; */
+  position: absolute;
+  left: 15px;
+  border-radius: 50%;
+}
+
+@keyframes fillPicker {
+  0% {
+    bottom: -500px;
+  }
+
+  100% {
+    bottom: -200px;
+  }
+}
+
+@keyframes emptyPicker {
+  0% {
+    bottom: -200px;
+  }
+
+  100% {
+    bottom: -500px;
+  }
+}

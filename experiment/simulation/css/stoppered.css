@@ -1,0 +1,104 @@
+/* body {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+} */
+
+.pipette {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.cap {
+  height: 0px;
+  width: calc(35px * var(--scale));
+  /* border-top: 45px solid rgba(130, 133, 135, 0.797); */
+  border-top: calc(45px * var(--scale)) solid #964b00;
+  border-left: calc(10px * var(--scale)) solid transparent;
+  border-right: calc(10px * var(--scale)) solid transparent;
+}
+
+.neck {
+  /* position: relative; */
+  height: 0px;
+  width: calc(35px * var(--scale));
+  border-top: calc(45px * var(--scale)) solid rgba(189, 195, 199, 0.8);
+  border-left: calc(10px * var(--scale)) solid transparent;
+  border-right: calc(10px * var(--scale)) solid transparent;
+}
+
+.neck > .cap {
+  position: relative;
+  top: -100px;
+  left: -10px;
+}
+
+.middle {
+  height: calc(300px * var(--scale));
+  width: calc(140px * var(--scale));
+  background-color: rgba(189, 195, 199, 0.4);
+  border-top-left-radius: calc(60px * var(--scale));
+  border-top-right-radius: calc(60px * var(--scale));
+  overflow: hidden;
+}
+
+.middle > .sediment {
+  background-image: url("../images/sediment-soil.jpg");
+  background-size: contain;
+  background-origin: border-box;
+  height: 100%;
+  position: relative;
+  z-index: -1;
+  bottom: -300px;
+}
+
+.bottom {
+  width: 180px;
+  height: 20px;
+  background-color: grey;
+  opacity: 0;
+}
+
+.markings {
+  position: absolute;
+  left: 0;
+}
+
+/* .markings > div {
+  border: 2px solid black;
+  width: 10px; */
+/* position: absolute;
+  left: 0; */
+/* } */
+
+@keyframes fillVessel {
+  0% {
+    bottom: -300px;
+  }
+
+  100% {
+    bottom: -150px;
+  }
+}
+
+@keyframes bath {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes cap {
+  0% {
+    top: -100px;
+  }
+  100% {
+    top: -45px;
+  }
+}

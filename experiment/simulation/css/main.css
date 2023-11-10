@@ -1,1 +1,86 @@
-/* You CSS goes in here */
+:root {
+  --scale: 1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+}
+
+#background {
+  position: absolute;
+  z-index: -999;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  display: grid;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: end;
+  padding-bottom: 50px;
+}
+
+.appratus {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.appratus > .beaker {
+  align-self: flex-end;
+  margin-right: 20px;
+}
+
+.appratus > .weighing_balance {
+  align-self: flex-start;
+}
+
+.actions {
+  padding: 100px;
+  border: 2px solid black;
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.actions > button {
+  padding: 20px;
+  /* width: 100px; */
+  /* height: 40px; */
+}
+
+.actions > #close {
+  all: unset;
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+#openAction {
+  position: absolute;
+  right: 2rem;
+  top: 3rem;
+}
+
+/* .test {
+  height: 300px;
+  width: 10px;
+  background-color: red;
+  position: absolute;
+  top: 0px;
+} */
