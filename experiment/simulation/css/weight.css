@@ -1,5 +1,5 @@
 .weight-image {
-  height: 200px;
+  height: calc(200px * var(--scale));
 }
 
 .weighing_balance {
@@ -18,8 +18,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
-  font-size: 3rem;
+  /* border-radius: 10px; */
+  font-size: calc(3rem * var(--scale));
 }
 
 .display_off {
@@ -67,7 +67,7 @@
 }
 
 .btn1 > img {
-  width: 20px;
+  width: calc(20px * var(--scale));
 }
 
 .btn2 {
@@ -75,5 +75,5 @@
 }
 
 .btn2 > img {
-  width: 20px;
+  width: calc(20px * var(--scale));
 }

@@ -6,13 +6,13 @@ const area = document.querySelector(".weigh_area");
 let status_weight = 0; // 0 means the weighing scale is off, 1 means it is on
 
 function weigh(weight) {
-  display.innerHTML = `${weight}`;
+  display.textContent = `${weight}`;
 }
 
 startBtn.addEventListener("click", () => {
   if (status_weight) {
     display.classList.add("display_off");
-    display.innerHTML = "0.000";
+    display.textContent = "0.000";
     status_weight = 0;
   } else {
     display.classList.remove("display_off");
@@ -21,7 +21,7 @@ startBtn.addEventListener("click", () => {
 });
 
 resetBtn.addEventListener("click", () => {
-  display.innerHTML = "0.000";
+  display.textContent = "0.000";
 });
 
 area.addEventListener("click", () => {

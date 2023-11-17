@@ -14,13 +14,13 @@
   flex-direction: column;
   align-items: center;
   transform: rotate(90deg);
-  left: 150px;
-  top: 100px;
+  left: calc(150px * var(--scale));
+  top: calc(100px * var(--scale));
 }
 
 .length {
-  height: 500px;
-  width: 10px;
+  height: calc(500px * var(--scale));
+  width: calc(10px * var(--scale));
   /* background-color: grey; */
   /* background-color: #c7e1ff; */
   background-color: rgba(189, 195, 199, 0.4);
@@ -36,7 +36,7 @@
   height: 100%;
   position: relative;
   z-index: -1;
-  bottom: -500px;
+  bottom: calc(-500px * var(--scale));
 }
 
 /* .length::after {
@@ -52,10 +52,10 @@
 } */
 
 .bulb {
-  height: 75px;
-  width: 45px;
+  height: calc(75px * var(--scale));
+  width: calc(45px * var(--scale));
   position: absolute;
-  top: 30px;
+  top: calc(30px * var(--scale));
   /* background-color: grey; */
   /* background-color: #c7e1ff; */
   background-color: rgba(189, 195, 199, 0.6);
@@ -66,27 +66,27 @@
   display: flex;
   align-items: center;
   position: absolute;
-  top: 130px;
+  top: calc(130px * var(--scale));
 }
 
 .pin {
-  height: 5px;
-  width: 70px;
+  height: calc(5px * var(--scale));
+  width: calc(70px * var(--scale));
   background-color: grey;
   /* background-color: #c7e1ff; */
   position: absolute;
-  left: -40px;
+  left: calc(-40px * var(--scale));
   /* z-index: 1; */
 }
 
 .shell {
-  height: 10px;
-  width: 50px;
+  height: calc(10px * var(--scale));
+  width: calc(50px * var(--scale));
   position: absolute;
   background-color: grey;
   /* background-color: #c7e1ff; */
   /* z-index: -1; */
-  left: -20px;
+  left: calc(-20px * var(--scale));
   overflow: hidden;
 }
 
@@ -102,12 +102,12 @@
 } */
 
 .screw {
-  width: 20px;
-  height: 20px;
+  width: calc(20px * var(--scale));
+  height: calc(20px * var(--scale));
   background-color: grey;
   /* background-color: #c7e1ff; */
   position: absolute;
-  left: 15px;
+  left: calc(15px * var(--scale));
   border-radius: 50%;
 }
 

@@ -1,5 +1,5 @@
 :root {
-  --scale: 1;
+  --scale: 0.7;
 }
 
 * {
@@ -46,18 +46,18 @@ body {
 }
 
 .actions {
-  padding: 100px;
+  padding: calc(100px * var(--scale));
   border: 2px solid black;
   position: absolute;
   right: 10px;
   top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: calc(20px * var(--scale));
 }
 
 .actions > button {
-  padding: 20px;
+  padding: calc(10px * var(--scale));
   /* width: 100px; */
   /* height: 40px; */
 }

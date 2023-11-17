@@ -1,7 +1,7 @@
 .beaker {
   position: relative;
-  height: 250px;
-  width: 200px;
+  height: calc(250px * var(--scale));
+  width: calc(200px * var(--scale));
   border: 2px solid black;
   background-color: rgba(189, 195, 199, 0.6);
   border-top-left-radius: 100px 30px;
@@ -14,7 +14,7 @@
 .beaker::before {
   content: "";
   width: 100%;
-  height: 50px;
+  height: 35px;
   position: absolute;
   border-bottom-left-radius: 100px 30px;
   border-bottom-right-radius: 100px 30px;
