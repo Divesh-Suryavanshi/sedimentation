@@ -113,20 +113,20 @@
 
 @keyframes fillPicker {
   0% {
-    bottom: -500px;
+    bottom: calc(-500px * var(--scale));
   }
 
   100% {
-    bottom: -200px;
+    bottom: calc(-200px * var(--scale));
   }
 }
 
 @keyframes emptyPicker {
   0% {
-    bottom: -200px;
+    bottom: calc(-200px * var(--scale));
   }
 
   100% {
-    bottom: -500px;
+    bottom: calc(-500px * var(--scale));
   }
 }

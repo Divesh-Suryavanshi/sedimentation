@@ -55,6 +55,9 @@ btnWeigh.addEventListener("click", () => {
       fill: "forwards",
     }
   );
+
+  beaker.style.setProperty("--shadowH", `${35}px`);
+
   beaker.animate(
     [
       {},

@@ -96,35 +96,109 @@ function pipetteInside() {
   if (!animationInProgress) {
     animationInProgress = true;
 
-    const anim = picker.animate(
+    picker.animate(
       [
         {
-          transform: "rotate(90deg) translate(0,0)",
+          // transform: "rotate(90deg) translate(0,0)",
         },
         {
-          transform: `rotate(0deg) translate(-${
-            Math.abs(neckCords.left - pickerCords.left) + 233
-          }px, -${Math.abs(neckCords.top - pickerCords.top) + 300}px)`,
+          transform: `rotate(0deg) translate(0, 0)`,
         },
         {
-          transform: `rotate(0deg) translate(-${
-            Math.abs(neckCords.left - pickerCords.left) + 233
-          }px, -${Math.abs(neckCords.top - pickerCords.top)}px)`,
+          transform: `rotate(0deg) translate(-${Math.abs(
+            neckCords.left +
+              neckCords.width / 2 -
+              pickerCords.left -
+              pickerCords.width / 2
+          )}px, ${-Math.abs(
+            neckCords.top - (pickerCords.top + pickerCords.width)
+          )}px)`,
         },
+        {
+          transform: `rotate(0deg) translate(-${Math.abs(
+            neckCords.left +
+              neckCords.width / 2 -
+              pickerCords.left -
+              pickerCords.width / 2
+          )}px, ${-Math.abs(neckCords.top - pickerCords.top)}px)`,
+        },
+        // {
+        //   transform: `rotate(0deg) translate(-${
+        //     Math.abs(neckCords.left - pickerCords.left) + 233
+        //   }px, -${Math.abs(neckCords.top - pickerCords.top)}px)`,
+        // },
       ],
       {
-        duration: 1000,
+        duration: 3000,
         fill: "forwards",
       }
-    );
-
-    anim.onfinish = function () {
-      this.commitStyles();
+    ).onfinish = () => {
       animationInProgress = false;
       console.log(
         "picker animation finish, picker rect =",
         picker.getBoundingClientRect()
       );
+      // put pipette into the pan
+      btnPutInPan.addEventListener("click", pipettePour, {
+        once: true,
+      });
+
+      function pipettePour() {
+        const picker = document.querySelector(".picker");
+        const neck = document.querySelector(".neck");
+        // const neck = document.querySelector(".neck");
+        const beaker = document.querySelector(".beaker");
+        // const pipette = document.querySelector(".picker");
+        const beakerRect = beaker.getBoundingClientRect();
+        // const pipetteRect = pipette.getBoundingClientRect();
+        // const neckCords = neck.getBoundingClientRect();
+        // const pickerCords = picker.getBoundingClientRect();
+        console.log("empty picker =", pickerCords);
+
+        if (!animationInProgress) {
+          animationInProgress = true;
+          picker.animate(
+            [
+              {},
+              {
+                transform: `translate(-${Math.abs(
+                  neckCords.left +
+                    neckCords.width / 2 -
+                    pickerCords.left -
+                    pickerCords.width / 2
+                )}px, ${-Math.abs(
+                  neckCords.top - (pickerCords.top + pickerCords.width)
+                )}px`,
+              },
+              {
+                transform: `translate(${
+                  beakerRect.left +
+                  beakerRect.width / 2 -
+                  (pickerCords.right - pickerCords.width / 2)
+                }px, ${
+                  beakerRect.top - (pickerCords.top + pickerCords.width)
+                }px)`,
+              },
+              {
+                transform: `translate(${
+                  beakerRect.left +
+                  beakerRect.width / 2 -
+                  (pickerCords.right - pickerCords.width / 2)
+                }px, ${beakerRect.top - (pickerCords.top + 20)}px)`,
+              },
+            ],
+            {
+              // options
+              duration: 2000,
+              fill: "forwards",
+            }
+          ).onfinish = function () {
+            // this.commitStyles();
+            console.log(picker.getBoundingClientRect());
+            animationInProgress = false;
+          };
+        }
+      }
     };
   }
 }
@@ -140,57 +214,6 @@ btnFillPicker.addEventListener(
     once: true,
   }
 );
-
-// put pipette into the pan
-btnPutInPan.addEventListener("click", pipettePour, {
-  once: true,
-});
-
-function pipettePour() {
-  const picker = document.querySelector(".picker");
-  const neck = document.querySelector(".neck");
-  // const neck = document.querySelector(".neck");
-  const beaker = document.querySelector(".beaker");
-  // const pipette = document.querySelector(".picker");
-  const beakerRect = beaker.getBoundingClientRect();
-  // const pipetteRect = pipette.getBoundingClientRect();
-  const neckCords = neck.getBoundingClientRect();
-  const pickerCords = picker.getBoundingClientRect();
-  console.log("empty picker =", pickerCords);
-
-  if (!animationInProgress) {
-    animationInProgress = true;
-    picker.animate(
-      [
-        {},
-        {
-          transform: `rotate(0deg) translate(-${
-            Math.abs(neckCords.left - pickerCords.left) + 233 + 146
-          }px, -${Math.abs(neckCords.top - pickerCords.top + 250)}px)`,
-        },
-        {
-          transform: `rotate(0deg) translate(${Math.abs(
-            pickerCords.left + 233 + 60 - beakerRect.left
-          )}px, -${Math.abs(neckCords.top - pickerCords.top + 250)}px)`,
-        },
-        {
-          transform: `rotate(0deg) translate(${Math.abs(
-            pickerCords.left + 233 + 60 - beakerRect.left
-          )}px, -${Math.abs(neckCords.top - pickerCords.top - 100)}px)`,
-        },
-      ],
-      {
-        // options
-        duration: 1000,
-        fill: "forwards",
-      }
-    ).onfinish = function () {
-      this.commitStyles();
-      console.log(picker.getBoundingClientRect());
-      animationInProgress = false;
-    };
-  }
-}
 
 // empty pipette into the pan
 btnEmpty.addEventListener(
@@ -261,28 +284,36 @@ function pickerRest() {
 btnHeat.addEventListener("click", heatBeaker, {
   once: true,
 });
+
 function heatBeaker() {
-  const microwave = document.querySelector(".microwave > .store > .window");
+  const microwaveWindow = document.querySelector(
+    ".microwave > .store > .window"
+  );
   const beaker = document.querySelector(".beaker");
   const sediment = document.querySelector(".beaker > .sediment");
 
-  const microwaveRect = microwave.getBoundingClientRect();
+  const microwaveWindowRect = microwaveWindow.getBoundingClientRect();
   const beakerRect = beaker.getBoundingClientRect();
 
   beaker.animate(
     [
       {},
       {
-        transform: `translate(${microwaveRect.left - beakerRect.left}px,${
-          microwaveRect.bottom - beakerRect.bottom - 20
-        }px)`,
-        height: `${microwaveRect.height - 50}px`,
-        width: `${microwaveRect.width / 2}px`,
+        transform: `translate(${
+          microwaveWindowRect.left +
+          microwaveWindowRect.width / 2 +
+          (beakerRect.width * 0.5) / 2 +
+          -beakerRect.right
+        }px,${microwaveWindowRect.bottom - beakerRect.bottom - 20}px)`,
+        height: `${beakerRect.height * 0.5}px`,
+        width: `${beakerRect.width * 0.5}px`,
         opacity: "30%",
       },
     ],
     { duration: 1000, fill: "forwards" }
-  );
+  ).onfinish = () => {
+    beaker.style.setProperty("--shadowH", `${35 * 0.5}px`);
+  };
 
   sediment.animate(
     [
@@ -297,14 +328,3 @@ function heatBeaker() {
     }
   );
 }
-
-btnFillPicker.addEventListener(
-  "click",
-  () => {
-    const sediment = document.querySelector(".length > .sediment");
-    sediment.style.setProperty("animation", "fillPicker 5s forwards");
-  },
-  {
-    once: true,
-  }
-);
